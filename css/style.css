@@ -1,0 +1,19 @@
+#output {
+
+  width:10%;
+  height:100px;
+/*  text-align: center;*/
+  color:blue;
+  display: inline-block;
+  position: absolute;
+  z-index:0;
+}
+
+
+#three {
+  width: 100%;
+/*  display: inline-block;*/
+  position: absolute;
+  z-index: 1
+  float: right;
+}
