@@ -159,12 +159,18 @@ scene.add( skyBox );
 
 
 //spheres galore!
+var bumpPre = "./images/bumps/";
 
- for (var i = 0; i< 400; i++) {
+
+ for (var i = 0; i< 50; i++) {
 
   var sphereGeo = new THREE.SphereGeometry( Math.floor(Math.random()*((30-3)+1)+3), 30, 30);
-  var sphereMat = new THREE.MeshPhongMaterial({});
+  var sphereMat = new THREE.MeshPhongMaterial({
+                      bumpMap: new THREE.ImageUtils.loadTexture(bumpPre + Math.floor(Math.random() * 10) + ".jpg")});
+
   sphere[i] = new THREE.Mesh(sphereGeo, sphereMat);
+  sphereMat.bumpMap.minFilter = THREE.LinearFilter;
+
   sphere[i].position.set(getNonZeroRandomNumber(), getNonZeroRandomNumber(), getNonZeroRandomNumber());
   sphere[i].material.color.setRGB(Math.random(), Math.random(), Math.random());
   scene.add(sphere[i]);
@@ -173,28 +179,28 @@ scene.add( skyBox );
 
 //test particle array
 
-particleGroup = new SPE.Group({
-      texture: THREE.ImageUtils.loadTexture('./images/smoke.png'),
-      maxAge: 2,
-          blending: THREE.AdditiveBlending
-    });
-boxField = new SPE.Emitter({
-  position: new THREE.Vector3(0,100,50),
-  positionSpread: new THREE.Vector3(1000,2000,1000),
-  acceleration: new THREE.Vector3(0.1,0.1,0.1),
-  colorStart: new THREE.Color('blue'),
-  colorEnd: new THREE.Color('white'),
-  sizeStart: 2,
-  sizeEnd: 2,
-  opacityStart: 1,
-  opacityMiddle: 1,
-  opacityEnd: 0,
-  particleCount: 100000,
-  maxAge: 2
-  });
+// particleGroup = new SPE.Group({
+//       texture: THREE.ImageUtils.loadTexture('./images/smoke.png'),
+//       maxAge: 2,
+//           blending: THREE.AdditiveBlending
+//     });
+// boxField = new SPE.Emitter({
+//   position: new THREE.Vector3(0,100,50),
+//   positionSpread: new THREE.Vector3(1000,2000,1000),
+//   acceleration: new THREE.Vector3(0.1,0.1,0.1),
+//   colorStart: new THREE.Color('blue'),
+//   colorEnd: new THREE.Color('white'),
+//   sizeStart: 2,
+//   sizeEnd: 2,
+//   opacityStart: 1,
+//   opacityMiddle: 1,
+//   opacityEnd: 0,
+//   particleCount: 100000,
+//   maxAge: 2
+//   });
 
-particleGroup.addEmitter(boxField);
-scene.add(particleGroup.mesh);
+// particleGroup.addEmitter(boxField);
+// scene.add(particleGroup.mesh);
 
 }
 
@@ -206,10 +212,10 @@ rotation += 0.05;
 if (hand !== undefined && hand.grabStrength < .5) {
   var yaw = hand.yaw();
   var pitch = hand.pitch();
-console.log("yaw: " + yaw);
-console.log("pitch: " + pitch);
-console.log("grab: " + hand.grabStrength);
-console.log("palmpos: " + hand.palmPosition);
+// console.log("yaw: " + yaw);
+// console.log("pitch: " + pitch);
+// console.log("grab: " + hand.grabStrength);
+// console.log("palmpos: " + hand.palmPosition);
 
 if (hand.palmPosition[2] > 200) {
     camera.translateZ(speed);
@@ -257,8 +263,8 @@ else if (hand.palmPosition[1] < 150) {
   // cube4.rotation.y -=0.014;
   // cube4.rotation.z -=0.014;
 
-  particleGroup.tick( dt/100000 );
-  boxField.position.x = 1;
+  // particleGroup.tick( dt/100000 );
+
   renderer.render(scene, camera);
 
 }
