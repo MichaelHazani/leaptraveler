@@ -49,7 +49,6 @@ var output = document.getElementById("output");
 
 var frameString="", handString="", fingerSTring="";
 var hand, finger, fingerString="";
-
 //Leap.loop uses requestAnimationFrame
 var options = {enableGestures: true };
 
@@ -96,10 +95,22 @@ for (var i=0; i < frame.hands.length; i++) {
 
 //Three.js stuff!
 
-var renderer, camera, scene;
-var boxField, cube;
+var renderer, camera, scene, controls, rotation = 0;
+var boxField, cube, particleGroup;
 var width = window.innerWidth;
 var height = window.innerHeight;
+
+//resize
+
+function onResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+}
+
+window.addEventListener('resize', onResize, false);
 
 function init() {
 
@@ -108,12 +119,29 @@ function init() {
   // scene.fog = new THREE.FogExp2( 0x000000, 0.001 );
 
   camera = new THREE.PerspectiveCamera( 45, width/height, .1, 10000 );
-  camera.position.z = 160;
-  renderer = new THREE.WebGLRenderer( {antialias: true, alpha: true} );
+  camera.position.z = 260;
+  renderer = new THREE.WebGLRenderer( {antialias: true, alpha: false} );
   renderer.setSize(width,height);
-  // renderer.setClearColor(0x222222);
+  renderer.setClearColor(0x222222);
   document.getElementById("three").appendChild(renderer.domElement);
 
+
+  //trackball controls (for cam rotation)
+  // controls = new THREE.TrackballControls( camera );
+
+  // controls.rotateSpeed = 1.0;
+  // controls.zoomSpeed = 1.2;
+  // controls.panSpeed = 0.8;
+
+  // controls.noZoom = false;
+  // controls.noPan = false;
+
+  // controls.staticMoving = true;
+  // controls.dynamicDampingFactor = 0.3;
+
+  // controls.keys = [ 65, 83, 68 ];
+
+  // controls.addEventListener( 'change', render );
 
 //light
 var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
@@ -129,37 +157,49 @@ var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
   scene.add(cube);
 
 //test particle array
-  var parGeo = new THREE.Geometry();
-  var particleCount = 10000;
-  var vertex = new THREE.Vector3();
 
-  for (var i = 0; i < particleCount; i++) {
-  vertex.x = Math.random() * 200 - 100;
-  vertex.y = Math.random() * 200 - 100;
-  vertex.z = Math.random() * 200 - 100;
-  parGeo.vertices.push(vertex);
-  }
+particleGroup = new SPE.Group({
+      texture: THREE.ImageUtils.loadTexture('./images/smoke.png'),
+      maxAge: 2,
+          blending: THREE.AdditiveBlending
+    });
+boxField = new SPE.Emitter({
+  position: new THREE.Vector3(0,-100,50),
+  positionSpread: new THREE.Vector3(50,600,100),
+  acceleration: new THREE.Vector3(0.1,0.1,0.1),
+  colorStart: new THREE.Color('blue'),
+  colorEnd: new THREE.Color('yellow'),
+  sizeStart: 3,
+  sizeEnd: 3,
+  opacityStart: 0,
+  opacityMiddle: 1,
+  opacityEnd: 0,
+  particleCount: 1000,
+  maxAge: 2
+  });
 
-  var parMat = new THREE.PointCloudMaterial( { size: 35});
-
-  boxField = new THREE.PointCloud(parGeo, parMat);
-  boxField.position.set(0,0,0);
-  scene.add(boxField);
+particleGroup.addEmitter(boxField);
+scene.add(particleGroup.mesh);
 
 }
 
-function render() {
+function render(dt) {
 
-  requestAnimationFrame(render);
+requestAnimationFrame(render);
+rotation += 0.05;
 //LeapMotion experiment
-
 if (hand !== undefined) {
-  cube.position.z = hand.palmPosition[2] - 150;
-  cube.position.x = hand.palmPosition[0];
-  cube.position.y = hand.palmPosition[1] - 150;
+  camera.position.z = hand.palmPosition[2] / 2 + 100;
+  camera.position.x = hand.palmPosition[0] / 2 ;
+  camera.position.y = hand.palmPosition[1] / 2 - 150;
+  console.log("yaw: " + hand.yaw());
+  console.log("palmpos: " + hand.palmPosition);
   }
+  // controls.update();
   cube.rotation.y +=0.01;
   cube.rotation.z +=0.01;
+  particleGroup.tick( dt/100000 );
+  boxField.position.x = 1;
   renderer.render(scene, camera);
 
 }
@@ -167,11 +207,6 @@ if (hand !== undefined) {
 
 init();
 render();
-
-
-
-
-
 
 
 
