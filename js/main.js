@@ -4,6 +4,7 @@ $(function(){
 
 //Leap Motion stuff
 
+
 //helper function #1
 function concatData(id, data) {
   return id + ": " + data + "<br>";
@@ -164,18 +165,18 @@ particleGroup = new SPE.Group({
           blending: THREE.AdditiveBlending
     });
 boxField = new SPE.Emitter({
-  position: new THREE.Vector3(0,-100,50),
-  positionSpread: new THREE.Vector3(50,600,100),
-  acceleration: new THREE.Vector3(0.1,0.1,0.1),
+  position: new THREE.Vector3(0,100,50),
+  positionSpread: new THREE.Vector3(200,300,300),
+  acceleration: new THREE.Vector3(0.1,-1,0.1),
   colorStart: new THREE.Color('blue'),
   colorEnd: new THREE.Color('yellow'),
-  sizeStart: 3,
-  sizeEnd: 3,
-  opacityStart: 0,
+  sizeStart: 4,
+  sizeEnd: 4,
+  opacityStart: 1,
   opacityMiddle: 1,
   opacityEnd: 0,
   particleCount: 1000,
-  maxAge: 2
+  maxAge: 4
   });
 
 particleGroup.addEmitter(boxField);
@@ -189,11 +190,33 @@ requestAnimationFrame(render);
 rotation += 0.05;
 //LeapMotion experiment
 if (hand !== undefined) {
-  camera.position.z = hand.palmPosition[2] / 2 + 100;
+  var yaw = hand.yaw();
+  var pitch = hand.pitch();
+
+
+
   camera.position.x = hand.palmPosition[0] / 2 ;
   camera.position.y = hand.palmPosition[1] / 2 - 150;
-  console.log("yaw: " + hand.yaw());
-  console.log("palmpos: " + hand.palmPosition);
+  camera.position.z = hand.palmPosition[2] / 2 + 100;
+  // console.log("yaw: " + hand.yaw());
+  // console.log("pitch: " + hand.pitch());
+  // console.log("palmpos: " + hand.palmPosition);
+
+  if (yaw < -0.06) {
+    camera.rotation.y += 90 * Math.PI / 50000;
+  }
+  if (yaw > 0.06) {
+    camera.rotation.y -= 90 * Math.PI / 50000;
+  }
+
+  if (pitch < -0.2) {
+    camera.rotation.x -= 90 * Math.PI / 250000;
+  }
+  if (pitch > 0.2) {
+    camera.rotation.x += 90 * Math.PI / 250000;
+  }
+
+
   }
   // controls.update();
   cube.rotation.y +=0.01;
