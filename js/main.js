@@ -97,11 +97,13 @@ for (var i=0; i < frame.hands.length; i++) {
 //Three.js stuff!
 
 var renderer, camera, scene, controls, rotation = 0;
-var boxField, cube, particleGroup;
+var boxField, cube, cube2, cube3, cube4, particleGroup;
+var sphere = [];
+var speed = 2;
 var width = window.innerWidth;
 var height = window.innerHeight;
 
-//resize
+//resize helper
 
 function onResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -110,8 +112,14 @@ function onResize() {
 
 
 }
-
 window.addEventListener('resize', onResize, false);
+
+//random location helper
+function getNonZeroRandomNumber(){
+    var random = Math.round(Math.random()*5000) - 2501;
+    if(random==0) return getNonZeroRandomNumber();
+    return random;
+}
 
 function init() {
 
@@ -119,30 +127,12 @@ function init() {
   scene = new THREE.Scene();
   // scene.fog = new THREE.FogExp2( 0x000000, 0.001 );
 
-  camera = new THREE.PerspectiveCamera( 45, width/height, .1, 10000 );
-  camera.position.z = 260;
+  camera = new THREE.PerspectiveCamera( 45, width/height, .1, 50000 );
   renderer = new THREE.WebGLRenderer( {antialias: true, alpha: false} );
   renderer.setSize(width,height);
   renderer.setClearColor(0x222222);
   document.getElementById("three").appendChild(renderer.domElement);
 
-
-  //trackball controls (for cam rotation)
-  // controls = new THREE.TrackballControls( camera );
-
-  // controls.rotateSpeed = 1.0;
-  // controls.zoomSpeed = 1.2;
-  // controls.panSpeed = 0.8;
-
-  // controls.noZoom = false;
-  // controls.noPan = false;
-
-  // controls.staticMoving = true;
-  // controls.dynamicDampingFactor = 0.3;
-
-  // controls.keys = [ 65, 83, 68 ];
-
-  // controls.addEventListener( 'change', render );
 
 //light
 var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
@@ -151,11 +141,35 @@ var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
         hemiLight.position.set( 0, 30, 0 );
         scene.add( hemiLight );
 
-  //test cube
-  var cubeGeo = new THREE.BoxGeometry(30,30,30);
-  var cubeMat = new THREE.MeshPhongMaterial({color:0xF400F4});
-  cube = new THREE.Mesh(cubeGeo, cubeMat);
-  scene.add(cube);
+//skybox
+var imagePrefix = "./images/skybox/purplenebula_";
+var directions  = ["right", "left", "top", "top", "back", "front"];
+var imageSuffix = ".jpg";
+var skyGeometry = new THREE.BoxGeometry( 10000, 10000, 10000 );
+
+var materialArray = [];
+for (var i = 0; i < 6; i++)
+  materialArray.push( new THREE.MeshBasicMaterial({
+    map: THREE.ImageUtils.loadTexture( imagePrefix + directions[i] + imageSuffix ),
+    side: THREE.DoubleSide
+  }));
+var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
+var skyBox = new THREE.Mesh( skyGeometry, skyMaterial );
+scene.add( skyBox );
+
+
+//spheres galore!
+
+ for (var i = 0; i< 400; i++) {
+
+  var sphereGeo = new THREE.SphereGeometry( Math.floor(Math.random()*((30-3)+1)+3), 30, 30);
+  var sphereMat = new THREE.MeshPhongMaterial({});
+  sphere[i] = new THREE.Mesh(sphereGeo, sphereMat);
+  sphere[i].position.set(getNonZeroRandomNumber(), getNonZeroRandomNumber(), getNonZeroRandomNumber());
+  sphere[i].material.color.setRGB(Math.random(), Math.random(), Math.random());
+  scene.add(sphere[i]);
+  }
+
 
 //test particle array
 
@@ -166,17 +180,17 @@ particleGroup = new SPE.Group({
     });
 boxField = new SPE.Emitter({
   position: new THREE.Vector3(0,100,50),
-  positionSpread: new THREE.Vector3(200,300,300),
-  acceleration: new THREE.Vector3(0.1,-1,0.1),
+  positionSpread: new THREE.Vector3(1000,2000,1000),
+  acceleration: new THREE.Vector3(0.1,0.1,0.1),
   colorStart: new THREE.Color('blue'),
-  colorEnd: new THREE.Color('yellow'),
-  sizeStart: 4,
-  sizeEnd: 4,
+  colorEnd: new THREE.Color('white'),
+  sizeStart: 2,
+  sizeEnd: 2,
   opacityStart: 1,
   opacityMiddle: 1,
   opacityEnd: 0,
-  particleCount: 1000,
-  maxAge: 4
+  particleCount: 100000,
+  maxAge: 2
   });
 
 particleGroup.addEmitter(boxField);
@@ -189,38 +203,60 @@ function render(dt) {
 requestAnimationFrame(render);
 rotation += 0.05;
 //LeapMotion experiment
-if (hand !== undefined) {
+if (hand !== undefined && hand.grabStrength < .5) {
   var yaw = hand.yaw();
   var pitch = hand.pitch();
+console.log("yaw: " + yaw);
+console.log("pitch: " + pitch);
+console.log("grab: " + hand.grabStrength);
+console.log("palmpos: " + hand.palmPosition);
+
+if (hand.palmPosition[2] > 200) {
+    camera.translateZ(speed);
+}
+
+else if (hand.palmPosition[2] < 100 && hand.palmPosition[2] > 0) {
+    camera.translateZ(-speed);
+}
+
+else if (hand.palmPosition[2] < 0) {
+    camera.translateZ(-speed * 3);
+}
 
 
+if (hand.palmPosition[1] > 250) {
+    camera.translateY(speed);
+}
 
-  camera.position.x = hand.palmPosition[0] / 2 ;
-  camera.position.y = hand.palmPosition[1] / 2 - 150;
-  camera.position.z = hand.palmPosition[2] / 2 + 100;
-  // console.log("yaw: " + hand.yaw());
-  // console.log("pitch: " + hand.pitch());
-  // console.log("palmpos: " + hand.palmPosition);
+else if (hand.palmPosition[1] < 150) {
+    camera.translateY(-speed);
+}
 
-  if (yaw < -0.06) {
+  if (yaw < -0.08) {
     camera.rotation.y += 90 * Math.PI / 50000;
   }
-  if (yaw > 0.06) {
+  if (yaw > 0.08) {
     camera.rotation.y -= 90 * Math.PI / 50000;
   }
 
-  if (pitch < -0.2) {
-    camera.rotation.x -= 90 * Math.PI / 250000;
+  if (pitch < -0.4) {
+    camera.rotation.x -= 90 * Math.PI / 100000;
   }
-  if (pitch > 0.2) {
-    camera.rotation.x += 90 * Math.PI / 250000;
+  if (pitch > 0.4) {
+    camera.rotation.x += 90 * Math.PI / 100000;
   }
-
 
   }
   // controls.update();
-  cube.rotation.y +=0.01;
-  cube.rotation.z +=0.01;
+  // cube.rotation.y +=0.012;
+  // cube.rotation.z +=0.012;
+  // cube2.rotation.y -=0.017;
+  // cube2.rotation.z -=0.017;
+  // cube3.rotation.y +=0.005;
+  // cube3.rotation.z +=0.005;
+  // cube4.rotation.y -=0.014;
+  // cube4.rotation.z -=0.014;
+
   particleGroup.tick( dt/100000 );
   boxField.position.x = 1;
   renderer.render(scene, camera);

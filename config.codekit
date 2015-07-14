@@ -11,6 +11,182 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/images\/bumps\/0.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3.85366e+06,
+		"inputAbbreviatedPath": "\/images\/bumps\/0.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/0.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.33081e+06,
+		"inputAbbreviatedPath": "\/images\/bumps\/1.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/1.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/2.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 131072,
+		"inputAbbreviatedPath": "\/images\/bumps\/2.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/2.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/3.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 131072,
+		"inputAbbreviatedPath": "\/images\/bumps\/3.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/3.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/4.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.38188e+06,
+		"inputAbbreviatedPath": "\/images\/bumps\/4.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/4.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/5.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 961205,
+		"inputAbbreviatedPath": "\/images\/bumps\/5.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/5.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/6.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 174959,
+		"inputAbbreviatedPath": "\/images\/bumps\/6.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/6.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/7.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.95168e+06,
+		"inputAbbreviatedPath": "\/images\/bumps\/7.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/7.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/8.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.33081e+06,
+		"inputAbbreviatedPath": "\/images\/bumps\/8.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/8.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/bumps\/9.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 102400,
+		"inputAbbreviatedPath": "\/images\/bumps\/9.jpg",
+		"outputAbbreviatedPath": "\/images\/bumps\/9.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/pluto.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 520077,
+		"inputAbbreviatedPath": "\/images\/pluto.png",
+		"outputAbbreviatedPath": "\/images\/pluto.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/skybox\/purplenebula_back.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 121112,
+		"inputAbbreviatedPath": "\/images\/skybox\/purplenebula_back.jpg",
+		"outputAbbreviatedPath": "\/images\/skybox\/purplenebula_back.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/skybox\/purplenebula_front.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 146175,
+		"inputAbbreviatedPath": "\/images\/skybox\/purplenebula_front.jpg",
+		"outputAbbreviatedPath": "\/images\/skybox\/purplenebula_front.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/skybox\/purplenebula_left.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 120867,
+		"inputAbbreviatedPath": "\/images\/skybox\/purplenebula_left.jpg",
+		"outputAbbreviatedPath": "\/images\/skybox\/purplenebula_left.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/skybox\/purplenebula_right.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 126240,
+		"inputAbbreviatedPath": "\/images\/skybox\/purplenebula_right.jpg",
+		"outputAbbreviatedPath": "\/images\/skybox\/purplenebula_right.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/skybox\/purplenebula_top.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 100020,
+		"inputAbbreviatedPath": "\/images\/skybox\/purplenebula_top.jpg",
+		"outputAbbreviatedPath": "\/images\/skybox\/purplenebula_top.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/smoke.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -64,17 +240,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/OrbitControls.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/OrbitControls.js",
-		"outputAbbreviatedPath": "\/js\/min\/OrbitControls-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/js\/ShaderParticles.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -103,17 +268,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/Three.min.js",
 		"outputAbbreviatedPath": "\/js\/min\/Three.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/TrackballControls.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/TrackballControls.js",
-		"outputAbbreviatedPath": "\/js\/min\/TrackballControls-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
