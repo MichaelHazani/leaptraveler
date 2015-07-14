@@ -493,7 +493,7 @@
 	"javascriptCreateSourceMap": 1,
 	"javascriptOutputStyle": 1,
 	"javascriptSyntaxCheckerStyle": 1,
-	"jsCheckerReservedNamesString": "",
+	"jsCheckerReservedNamesString": "THREE, Leap",
 	"jsHintFlags2": {
 		"asi": {
 			"active": 0,
@@ -516,7 +516,7 @@
 			"flagValue": -1
 			},
 		"camelcase": {
-			"active": 0,
+			"active": 1,
 			"flagValue": -1
 			},
 		"couch": {
