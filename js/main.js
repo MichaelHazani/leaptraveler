@@ -274,7 +274,7 @@ pivot[1].rotation.y -= 0.0004;
 pivot[1].rotation.x += 0.0001;
 pivot[2].rotation.y -= 0.0004;
 pivot[2].rotation.x -= 0.0002;
-console.log(camera.position);
+// console.log(camera.position);
 // boxField.position.z = camera.position.z - 50;
 // boxField.position.x = camera.position.x;
 // boxField.position.y = camera.position.y;

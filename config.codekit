@@ -132,6 +132,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/preview.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 38215,
+		"inputAbbreviatedPath": "\/images\/preview.png",
+		"outputAbbreviatedPath": "\/images\/preview.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/skybox\/purplenebula_back.jpg": {
 		"fileType": 16384,
 		"ignore": 0,

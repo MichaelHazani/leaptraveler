@@ -5,10 +5,16 @@ A JS implementation to assist in Leapmotion Three.js scene-navigation and traver
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta property="og:title" content="Leaptraveler">
+  <meta property="og:description" content="A LeapMotion navigation experiment">
+  <meta property="og:image" content="images/preview.png">
+  <meta property="og:url" content="http://leaptraveler.michaelhazani.net">
+  <meta property="og:type" content="art">
+  <meta name="Viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <title>Leaptraveler</title>
   <script src="//js.leapmotion.com/leap-0.6.4.js"></script>
-  <script src="./js/three.min.js"></script>
+  <script src="./js/Three.min.js"></script>
   <script src="./js/ShaderParticles.js"></script>
 
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -21,7 +27,21 @@ A JS implementation to assist in Leapmotion Three.js scene-navigation and traver
 <audio loop autoplay src="./audio/cosmos.ogg"></audio>
 <div id="output"></div>
 <div id="three"></div>
+<div class="intro">
+Leaptraveler <br>
+A LeapMotion navigation experiment <br>
+  <div class="credit">By Michael Hazani<br>
+  <a href="http://www.michaelhazani.net">tumblr</a>//<a href="http://github.com/MichaelHazani/leaptraveler">github</a>
+</div>
 <script>
+$(function(){
+
+  $(".intro").fadeIn(8000);
+  $(".intro").fadeOut(10000);
+
+});
+//intro
+
 
 </script>
 </body>

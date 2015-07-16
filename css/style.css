@@ -1,3 +1,8 @@
+body {
+  background-color: black;
+
+
+}
 #output {
 
   width:10%;
@@ -16,4 +21,24 @@
   position: absolute;
   z-index: 1
   float: right;
+}
+
+.intro {
+  position: absolute;
+  z-index: 2;
+  font-family: "courier new";
+  color: white;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+
+  display: none;
+}
+
+.credit {
+  font-size: 14px;
+}
+
+.credit > a {
+  color: #FFeeFF;
 }
